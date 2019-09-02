@@ -46,3 +46,12 @@ for (let i = 1; i <= 6; i++) {
   navElements[i - 1].textContent = siteContent.nav[`nav-item-${i}`];
 }
 
+let cta = document.getElementsByClassName("cta")[0];
+let ctaText = cta.querySelector(".cta-text");
+let ctaH1 = ctaText.children[0];
+ctaH1.textContent = siteContent.cta.h1;
+let ctaButton = ctaText.children[1];
+ctaButton.textContent = siteContent.cta.button;
+let ctaImg = cta.children["cta-img"];
+ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
+// Okay. The above is _definitely_ convoluted. What'd be the best way of doing this?

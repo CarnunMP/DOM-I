@@ -74,3 +74,6 @@ let contactKeys =  Object.keys(siteContent.contact);
 for (let i = 0; i < contactKeys.length; i++) {
   contact.children[i].textContent = siteContent.contact[contactKeys[i]];
 }
+
+let footer = document.querySelector("footer");
+footer.textContent = siteContent.footer.copyright;

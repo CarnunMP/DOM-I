@@ -80,3 +80,12 @@ footer.textContent = siteContent.footer.copyright;
 
 // Task 3:
 document.querySelectorAll("a").forEach(a => a.style.color = "green");
+
+let navFAQ = document.createElement("a");
+navFAQ.textContent = "FAQ";
+document.querySelector("nav").appendChild(navFAQ);
+let home = document.createElement("a");
+home.textContent = "Home";
+document.querySelector("nav").prepend(home);
+
+document.querySelectorAll("a").forEach(a => a.style.color = "green"); // Pasted again to check whether it'd turn _navFAQ_ and _home_ green...

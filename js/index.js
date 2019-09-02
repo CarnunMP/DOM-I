@@ -53,5 +53,18 @@ ctaH1.textContent = siteContent.cta.h1;
 let ctaButton = ctaText.children[1];
 ctaButton.textContent = siteContent.cta.button;
 let ctaImg = cta.children["cta-img"];
-ctaImg.setAttribute('src', siteContent["cta"]["img-src"]);
+ctaImg.setAttribute("src", siteContent["cta"]["img-src"]);
 // Okay. The above is _definitely_ convoluted. What'd be the best way of doing this?
+
+let textContent = document.getElementsByClassName("text-content")
+let textToInject = [];
+for (key in siteContent["main-content"]) {
+  if (key != "middle-img-src") {
+    textToInject.push(siteContent["main-content"][key]);
+  }
+}
+for (let i = 0; i < textContent.length * 2; i++) {
+  textContent[Math.floor(i / 2)].children[i % 2].textContent = textToInject[i];
+}
+let middleImg = document.getElementById("middle-img");
+middleImg.setAttribute("src", siteContent["main-content"]["middle-img-src"]);

@@ -68,3 +68,9 @@ for (let i = 0; i < textContent.length * 2; i++) {
 }
 let middleImg = document.getElementById("middle-img");
 middleImg.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+
+let contact = document.querySelector(".contact");
+let contactKeys =  Object.keys(siteContent.contact);
+for (let i = 0; i < contactKeys.length; i++) {
+  contact.children[i].textContent = siteContent.contact[contactKeys[i]];
+}

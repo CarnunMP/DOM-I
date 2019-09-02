@@ -77,3 +77,6 @@ for (let i = 0; i < contactKeys.length; i++) {
 
 let footer = document.querySelector("footer");
 footer.textContent = siteContent.footer.copyright;
+
+// Task 3:
+document.querySelectorAll("a").forEach(a => a.style.color = "green");

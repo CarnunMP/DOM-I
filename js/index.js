@@ -40,3 +40,52 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+let navElements = Array.from(document.getElementsByTagName("nav")[0].children); // I know this is a little convoluted: I'm just playing around! :)
+for (let i = 1; i <= 6; i++) {
+  navElements[i - 1].textContent = siteContent.nav[`nav-item-${i}`];
+}
+
+let cta = document.getElementsByClassName("cta")[0];
+let ctaText = cta.querySelector(".cta-text");
+let ctaH1 = ctaText.children[0];
+ctaH1.textContent = siteContent.cta.h1;
+let ctaButton = ctaText.children[1];
+ctaButton.textContent = siteContent.cta.button;
+let ctaImg = cta.children["cta-img"];
+ctaImg.setAttribute("src", siteContent["cta"]["img-src"]);
+// Okay. The above is _definitely_ convoluted. What'd be the best way of doing this?
+
+let textContent = document.getElementsByClassName("text-content")
+let textToInject = [];
+for (key in siteContent["main-content"]) {
+  if (key != "middle-img-src") {
+    textToInject.push(siteContent["main-content"][key]);
+  }
+}
+for (let i = 0; i < textContent.length * 2; i++) {
+  textContent[Math.floor(i / 2)].children[i % 2].textContent = textToInject[i];
+}
+let middleImg = document.getElementById("middle-img");
+middleImg.setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+
+let contact = document.querySelector(".contact");
+let contactKeys =  Object.keys(siteContent.contact);
+for (let i = 0; i < contactKeys.length; i++) {
+  contact.children[i].textContent = siteContent.contact[contactKeys[i]];
+}
+
+let footer = document.querySelector("footer");
+footer.textContent = siteContent.footer.copyright;
+
+// Task 3:
+document.querySelectorAll("a").forEach(a => a.style.color = "green");
+
+let navFAQ = document.createElement("a");
+navFAQ.textContent = "FAQ";
+document.querySelector("nav").appendChild(navFAQ);
+let home = document.createElement("a");
+home.textContent = "Home";
+document.querySelector("nav").prepend(home);
+
+document.querySelectorAll("a").forEach(a => a.style.color = "green"); // Pasted again to check whether it'd turn _navFAQ_ and _home_ green...
